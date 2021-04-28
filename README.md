@@ -16,14 +16,10 @@ your account's public key.
 ## Running the example
 
 First up, add an environment variable containing your public key:
+
 ```bash
-# Your Keygen account's public key (make sure it is *exact* - newlines and all)
-export KEYGEN_PUBLIC_KEY=$(printf %b \
-  '-----BEGIN PUBLIC KEY-----\n' \
-  'zdL8BgMFM7p7+FGEGuH1I0KBaMcB/RZZSUu4yTBMu0pJw2EWzr3CrOOiXQI3+6bA\n' \
-  # …
-  'efK41Ml6OwZB3tchqGmpuAsCEwEAaQ==\n' \
-  '-----END PUBLIC KEY-----')
+# Your Keygen account's base64 encoded public key
+export KEYGEN_PUBLIC_KEY=$(echo -n LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUlJQklqQU5CZ2txaGtpRzl3MEJBUUVGQUFPQ0FROEFNSUlCQ2dLQ0FRRUF6UEFzZURZdXBLNzhaVWFTYkd3NwpZeVVDQ2VLby8xWHFUQUNPY21UVEhIR2dlSGFjTEsyajlVcmJUbGhXNWg4VnlvMGlVRUhyWTFLZ2Y0d3dpR2dGCmgwWWMrb0RXRGhxMWJJZXJ0STAzQUU0MjBMYnBVZjZPVGlvWCtuWTBFSW54WEYzSjdhQWR4L1IvbllnUkpyTFoKOUFUV2FRVlNnZjN2dHhDdEN3VWVLeEtaSTQxR0EvOUtIVGNDbWQzQnJ5QVExcGlZUHIrcXJFR2YyTkRKZ3IzVwp2VnJNdG5qZW9vcmRBYUNUeVlLdGZtNTZXR1hlWHI0M2RmZGVqQnVJa0k1a3FTendWeW94aG5qRS9SajZ4a3M4CmZmSCtka0FQTndtMElweFhKZXJ5YmptUFd5djdpeVhFVU44Q0tHKzY0MzBEN05vWUhwL2M5OTFaSFFCVXM1OWcKdndJREFRQUIKLS0tLS1FTkQgUFVCTElDIEtFWS0tLS0tCg== | base64 --decode)
 ```
 
 You can either run each line above within your terminal session before
@@ -31,11 +27,13 @@ starting the app, or you can add the above contents to your `~/.bashrc`
 file and then run `source ~/.bashrc` after saving the file.
 
 Next, grant the `main.sh` bash script execute privileges:
+
 ```bash
 chmod +x main.sh
 ```
 
 Then run the script, entering the signed key when prompted:
+
 ```bash
 ./main.sh
 ```
