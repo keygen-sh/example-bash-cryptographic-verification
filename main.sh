@@ -23,12 +23,12 @@ openssl dgst -verify <(echo -n "$KEYGEN_PUBLIC_KEY") -sha256 \
   -sigopt rsa_padding_mode:pss \
   -sigopt rsa_pss_saltlen:-2 \
   -sigopt rsa_mgf1_md:sha256 \
-  -signature <(echo -n "$enc_sig" | base64 -D) \
+  -signature <(echo -n "$enc_sig" | base64 --decode) \
   <(echo -n "key/$enc_key") \
   > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
-  dec_key=$(echo -n "$enc_key" | base64 -D)
+  dec_key=$(echo -n "$enc_key" | base64 --decode)
 
   echo -e "\033[32mLicense key is cryptographically valid!\033[0m"
   echo -e "  => \033[34m$dec_key\033[0m"
